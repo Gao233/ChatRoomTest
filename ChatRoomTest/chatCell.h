@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  chatCell.h
 //  ChatRoomTest
 //
 //  Created by Gaoyuan Chen on 6/22/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
-
+@interface chatCell : UITableViewCell
 
 @end
-
