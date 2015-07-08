@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface EditFriendsViewController : UIViewController
+@interface EditFriendsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UITableView *tableview;
+
+@property (nonatomic, strong) NSArray *allUsers;
+@property (nonatomic, strong) PFUser *currentUser;
+@property (nonatomic, strong) NSMutableArray *friends;
+
+
+-(BOOL) isFriend: (PFUser *)user;
 
 @end

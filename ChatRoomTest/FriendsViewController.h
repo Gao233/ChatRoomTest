@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import "EditFriendsViewController.h"
+#import "ChatView.h"
 
-@interface FriendsViewController : UIViewController
+@interface FriendsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+    
+@property (strong, nonatomic) IBOutlet UITableView *tableview;
+
+
+@property (strong, nonatomic) NSArray *friends;
+@property (strong, nonatomic) PFUser *chatUser;
+@property (nonatomic, strong) PFRelation *friendsRelation;
+
 
 @end

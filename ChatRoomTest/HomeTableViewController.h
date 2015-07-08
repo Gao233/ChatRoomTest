@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface HomeTableViewController : UITableViewController
+
+@property (strong, nonatomic) PFUser *currentUser;
+
+//- (IBAction)logout:(id)sender;
 
 @end

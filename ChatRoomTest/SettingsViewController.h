@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
+#import <QuartzCore/QuartzCore.h>
 
-@interface SettingsViewController : UIViewController
+
+@interface SettingsViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+
+@property (strong, nonatomic) IBOutlet UITableView *tableview;
+@property (nonatomic, strong) PFUser *currentUser;
+@property (nonatomic, strong) UIImagePickerController *imagepicker;
+@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UITapGestureRecognizer *tapRecongnizer;
+
+- (IBAction)logout:(id)sender;
 
 @end

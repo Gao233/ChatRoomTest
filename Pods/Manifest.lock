@@ -1,0 +1,23 @@
+PODS:
+  - Bolts/Tasks (1.2.0)
+  - JSQMessagesViewController (7.1.0):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
+  - Parse (1.7.5):
+    - Bolts/Tasks (>= 1.2.0)
+  - ParseUI (1.1.4):
+    - Parse (~> 1.7)
+
+DEPENDENCIES:
+  - JSQMessagesViewController
+  - Parse
+  - ParseUI
+
+SPEC CHECKSUMS:
+  Bolts: d176cb1e0012175589e389a9db49b85e27787576
+  JSQMessagesViewController: ca11f86fa68ca70835f05e169df9244147c1dc40
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  Parse: 7c0f115eff3e0cea3fac08d50bda47154edb8832
+  ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
+
+COCOAPODS: 0.37.2
