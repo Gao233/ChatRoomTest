@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "300D04271B38673A0032F927"
-               BuildableName = "ChatRoomTest.app"
-               BlueprintName = "ChatRoomTest"
-               ReferencedContainer = "container:ChatRoomTest.xcodeproj">
+               BuildableName = "Tango.app"
+               BlueprintName = "Tango"
+               ReferencedContainer = "container:Tango.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "300D04431B38673B0032F927"
-               BuildableName = "ChatRoomTestTests.xctest"
-               BlueprintName = "ChatRoomTestTests"
-               ReferencedContainer = "container:ChatRoomTest.xcodeproj">
+               BuildableName = "TangoTests.xctest"
+               BlueprintName = "TangoTests"
+               ReferencedContainer = "container:Tango.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "300D04431B38673B0032F927"
-               BuildableName = "ChatRoomTestTests.xctest"
-               BlueprintName = "ChatRoomTestTests"
-               ReferencedContainer = "container:ChatRoomTest.xcodeproj">
+               BuildableName = "TangoTests.xctest"
+               BlueprintName = "TangoTests"
+               ReferencedContainer = "container:Tango.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "300D04271B38673A0032F927"
-            BuildableName = "ChatRoomTest.app"
-            BlueprintName = "ChatRoomTest"
-            ReferencedContainer = "container:ChatRoomTest.xcodeproj">
+            BuildableName = "Tango.app"
+            BlueprintName = "Tango"
+            ReferencedContainer = "container:Tango.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "300D04271B38673A0032F927"
-            BuildableName = "ChatRoomTest.app"
-            BlueprintName = "ChatRoomTest"
-            ReferencedContainer = "container:ChatRoomTest.xcodeproj">
+            BuildableName = "Tango.app"
+            BlueprintName = "Tango"
+            ReferencedContainer = "container:Tango.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "300D04271B38673A0032F927"
-            BuildableName = "ChatRoomTest.app"
-            BlueprintName = "ChatRoomTest"
-            ReferencedContainer = "container:ChatRoomTest.xcodeproj">
+            BuildableName = "Tango.app"
+            BlueprintName = "Tango"
+            ReferencedContainer = "container:Tango.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

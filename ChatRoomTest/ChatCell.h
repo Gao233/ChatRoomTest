@@ -10,11 +10,14 @@
 #import <Parse/Parse.h>
 #import <ParseUI.h>
 
-@interface ChatCell : UITableViewCell
+@interface ChatCell : UITableViewCell{
+    IBOutlet UILabel *labelDescription;
+    IBOutlet UILabel *labelLastMessage;
+}
 
 @property (strong, nonatomic) IBOutlet PFImageView *imageUser;
-@property (strong, nonatomic) IBOutlet UILabel *labelDescription;
-@property (strong, nonatomic) IBOutlet UILabel *labelLastMessage;
+@property (strong, retain) IBOutlet UILabel *labelDescription;
+@property (strong, retain) IBOutlet UILabel *labelLastMessage;
 @property (strong, nonatomic) IBOutlet UILabel *labelElapsed;
 @property (strong, nonatomic) IBOutlet UILabel *labelCounter;
 

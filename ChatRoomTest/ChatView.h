@@ -12,12 +12,16 @@
 #import <Parse/Parse.h>
 #import <ParseUI.h>
 
-@interface ChatView : JSQMessagesViewController<UIActionSheetDelegate, JSQMessageBubbleImageDataSource>
+@interface ChatView : JSQMessagesViewController<UIActionSheetDelegate,UITextFieldDelegate, JSQMessageBubbleImageDataSource>
 
 @property (strong, nonatomic) PFUser *reciever;
 @property (strong, nonatomic) PFUser *currentUser;
 @property (strong, nonatomic) NSMutableArray *messages;
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImageData;
 @property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImageData;
+@property (strong, nonatomic) PFObject *recentItem;
+
+
+- (id)initWith:(NSString *)groupId_;
 
 @end

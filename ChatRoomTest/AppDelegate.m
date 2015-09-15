@@ -23,6 +23,12 @@
     
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    [[UITabBar appearance] setTintColor:[UIColor blackColor]];
+    [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
+    
+     [NSThread sleepForTimeInterval:0.85];
+    
     return YES;
 }
 

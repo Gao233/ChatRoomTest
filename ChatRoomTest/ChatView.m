@@ -8,76 +8,150 @@
 
 #import "ChatView.h"
 
-@interface ChatView ()
+@interface ChatView (){
+
+	NSString *groupId;
+    NSTimer *timer;
+    BOOL isLoading;
+    NSString *lastMessageText;
+    NSString *recentObjectId;
+
+}
 
 @end
-
 
 @implementation ChatView
 
 
+- (id)initWith:(NSString *)groupId_
+
+{
+    self = [super init];
+    groupId = groupId_;
+    isLoading = NO;
+    return self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"Current chat user is: %@", self.reciever);
-    
+
     self.messages = [[NSMutableArray alloc] init];
     
     self.currentUser = [PFUser currentUser];
-    self.title = self.reciever.username;
+//    self.title = self.reciever.username;
 
     self.senderId = self.currentUser.objectId;
     self.senderDisplayName = self.currentUser.username;
-    
-    /**
-     *  You can set custom avatar sizes
-     */
-//    if (![NSUserDefaults incomingAvatarSetting]) {
-//        self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
-//    }
-//    
-//    if (![NSUserDefaults outgoingAvatarSetting]) {
-//        self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
-//    }
 
     self.showLoadEarlierMessagesHeader = YES;
-    //TODO: Using Parse.com to download all the pass messages
+    
+    //Using Parse.com to download all the pass messages
+
+    isLoading = NO;
+    [self loadMessages];
+    [self createRecentItem];
+}
+
+-(void)loadMessages{
+    
+    if(isLoading == NO){
+    
+    isLoading = YES;
+    JSQMessage *lastMessage = [self.messages lastObject];
+    lastMessageText = lastMessage.text;
+        
     PFQuery *query = [PFQuery queryWithClassName:@"Messages"];
-    [query whereKey:@"recieverId" equalTo:self.reciever.objectId];
+    [query whereKey:@"groupId" equalTo:groupId];
+    if (lastMessage != nil) [query whereKey:@"createdAt" greaterThan:lastMessage.date];
     [query orderByDescending:@"createdAt"];
     [query setLimit:50];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
          if (error == nil)
          {
-             //             BOOL incoming = NO;
              self.automaticallyScrollsToMostRecentMessage = NO;
              for (PFObject *object in [objects reverseObjectEnumerator])
              {
                  NSDate *date = [object createdAt];
                  JSQMessage *message = [[JSQMessage alloc] initWithSenderId:object[@"senderId"] senderDisplayName:object[@"senderDisplayName"] date:date text:object[@"text"]];
-                 //         if ([self incoming:message]) incoming = YES;
                  [self.messages addObject:message];
-                 NSLog(@"Messages are: %@", self.messages);
              }
              
              if ([objects count] != 0)
              {
-                 //                 if (initialized && incoming)
-                 [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
+//                 [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
                  [self finishReceivingMessage];
                  [self scrollToBottomAnimated:NO];
              }
              self.automaticallyScrollsToMostRecentMessage = YES;
-             //             initialized = YES;
+             
          }
-         //         else [ProgressHUD showError:@"Network error."];
-         //         isLoading = NO;
-     }];
-}
+                      isLoading = NO;
+      }];
+    }
     
+        [self updateLastMessage];
+}
+
+
+-(void)createRecentItem{
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Recent"];
+    [query whereKey:@"groupId" equalTo:groupId];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error){
+            
+        }else
+        {
+            if([objects count] == 0)
+            {
+                //Create a Recent item on Parse.com
+                PFObject *recent = [PFObject objectWithClassName:@"Recent"];
+                recent[@"RecieverFullName"] = self.reciever.username;
+                recent[@"RecieverId"] = self.reciever.objectId;
+                recent[@"SenderFullName"] = [self.currentUser username];
+                recent[@"groupId"] = groupId;
+                recent[@"LastMessage"] = @"";
+                
+                [recent saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        recentObjectId = recent.objectId;
+                        
+                        NSLog(@"id: %@", recent.objectId);
+                    } else {
+                        // There was a problem, check error.description
+                    }
+                }];
+            }else
+            {
+                self.recentItem = [objects objectAtIndex:0];
+                recentObjectId = self.recentItem.objectId;
+            }
+        }
+    }];
+}
+
+-(void)updateLastMessage
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Recent"];
+
+    // Retrieve the object by id
+    [query getObjectInBackgroundWithId:recentObjectId
+                                 block:^(PFObject *recent, NSError *error) {
+                                     // Now let's update it with some new data. In this case, only cheatMode and score
+                                     // will get sent to the cloud. playerName hasn't changed.
+                                     recent[@"LastMessage"] = lastMessageText;
+                                     
+                                     [recent saveInBackground];
+                                 }];
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
+    self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
     
 }
 
@@ -85,19 +159,15 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    /**
-     *  Enable/disable springy bubbles, default is NO.
-     *  You must set this from `viewDidAppear:`
-     *  Note: this feature is mostly stable, but still experimental
-     */
-    
-    // Disable to show the avatar
-     self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
-     self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
-   
+    self.collectionView.collectionViewLayout.springinessEnabled = YES;
+    timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(loadMessages) userInfo:nil repeats:YES];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+
+    [super viewWillDisappear:animated];
+    [timer invalidate];
+}
 #pragma mark - JSQMessagesViewController method overrides
 
 - (void)didPressSendButton:(UIButton *)button
@@ -106,14 +176,7 @@
          senderDisplayName:(NSString *)senderDisplayName
                       date:(NSDate *)date
 {
-    /**
-     *  Sending a message. Your implementation of this method should do *at least* the following:
-     *
-     *  1. Play sound (optional)
-     *  2. Add new id<JSQMessageData> object to your data source
-     *  3. Call `finishSendingMessage`
-     */
-//    [JSQSystemSoundPlayer jsq_playMessageSentSound];
+    [JSQSystemSoundPlayer jsq_playMessageSentSound];
     
     //Create a messsage object and save it in array locally
     JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
@@ -125,12 +188,14 @@
     PFObject *singleMessage = [PFObject objectWithClassName:@"Messages"];
     singleMessage[@"senderId"] = senderId;
     singleMessage[@"senderDisplayName"] = senderDisplayName;
-    singleMessage[@"recieverId"] = self.reciever.objectId;
-    singleMessage[@"recieverDisplayName"] = self.reciever.username;
+    singleMessage[@"groupId"] = groupId;
     singleMessage[@"text"] = text;
     [singleMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
             NSLog(@"Error: %@, %@", error, [error userInfo]);
+        }else{
+            [JSQSystemSoundPlayer jsq_playMessageSentSound];
+            [self loadMessages];
         }
     }];
     [self finishSendingMessageAnimated:YES];
@@ -193,12 +258,6 @@
 
 - (id<JSQMessageBubbleImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView messageBubbleImageDataForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    /**
-     *  You may return nil here if you do not want bubbles.
-     *  In this case, you should set the background color of your collection view cell's textView.
-     *
-     *  Otherwise, return your previously created bubble image data objects.
-     */
     
     JSQMessage *message = [self.messages objectAtIndex:indexPath.item];
     
@@ -216,51 +275,11 @@
 - (id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     //TODO: Add avatar images
-    /**
-     *  Return `nil` here if you do not want avatars.
-     *  If you do return `nil`, be sure to do the following in `viewDidLoad`:
-     *
-     *  self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
-     *  self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
-     *
-     *  It is possible to have only outgoing avatars or only incoming avatars, too.
-     */
-    
-    /**
-     *  Return your previously created avatar image data objects.
-     *
-     *  Note: these the avatars will be sized according to these values:
-     *
-     *  self.collectionView.collectionViewLayout.incomingAvatarViewSize
-     *  self.collectionView.collectionViewLayout.outgoingAvatarViewSize
-     *
-     *  Override the defaults in `viewDidLoad`
-     */
-//    JSQMessage *message = [self.messages objectAtIndex:indexPath.item];
-//
-//    if ([message.senderId isEqualToString:self.senderId]) {
-//        if (![NSUserDefaults outgoingAvatarSetting]) {
-//            return nil;
-//        }
-//    }
-//    else {
-//        if (![NSUserDefaults incomingAvatarSetting]) {
-//            return nil;
-//        }
-//    }
-    
-    
     return nil;
 }
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath
 {
-    /**
-     *  This logic should be consistent with what you return from `heightForCellTopLabelAtIndexPath:`
-     *  The other label text delegate methods should follow a similar pattern.
-     *
-     *  Show a timestamp for every 3rd message
-     */
     if (indexPath.item % 3 == 0) {
         JSQMessage *message = [self.messages objectAtIndex:indexPath.item];
         return [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:message.date];
@@ -285,17 +304,7 @@
     
     /**
      *  Configure almost *anything* on the cell
-     *
-     *  Text colors, label text, label colors, etc.
-     *
-     *
-     *  DO NOT set `cell.textView.font` !
-     *  Instead, you need to set `self.collectionView.collectionViewLayout.messageBubbleFont` to the font you want in `viewDidLoad`
-     *
-     *
-     *  DO NOT manipulate cell layout information!
-     *  Instead, override the properties you want on `self.collectionView.collectionViewLayout` from `viewDidLoad`
-     */
+     **/
     
     JSQMessage *msg = [self.messages objectAtIndex:indexPath.item];
     
@@ -324,12 +333,6 @@
      *  Each label in a cell has a `height` delegate method that corresponds to its text dataSource method
      */
     
-    /**
-     *  This logic should be consistent with what you return from `attributedTextForCellTopLabelAtIndexPath:`
-     *  The other label height delegate methods should follow similarly
-     *
-     *  Show a timestamp for every 3rd message
-     */
     if (indexPath.item % 3 == 0) {
         return kJSQMessagesCollectionViewCellLabelHeightDefault;
     }
@@ -386,5 +389,7 @@
 {
     NSLog(@"Tapped cell at %@!", NSStringFromCGPoint(touchLocation));
 }
+
+
 
 @end

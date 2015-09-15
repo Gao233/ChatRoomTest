@@ -10,14 +10,9 @@
 
 @interface SettingsViewController ()
 
-@property (strong, nonatomic) IBOutlet PFImageView *imageUser;
+@property (strong, nonatomic) IBOutlet PFImageView *ParseImage;
 @property (strong, nonatomic) IBOutlet UILabel *labelName;
 
-//@property (strong, nonatomic) IBOutlet UITableViewCell *cellBlocked;
-//@property (strong, nonatomic) IBOutlet UITableViewCell *cellPrivacy;
-//@property (strong, nonatomic) IBOutlet UITableViewCell *cellTerms;
-//
-//@property (strong, nonatomic) IBOutlet UITableViewCell *cellLogout;
 
 //TODO: Finish the Tableview Cell
 
@@ -25,7 +20,7 @@
 
 @implementation SettingsViewController
 
-@synthesize imageUser, labelName;
+@synthesize ParseImage, labelName;
 //@synthesize cellBlocked, cellPrivacy, cellTerms, cellLogout;
 
 - (void)viewDidLoad {
@@ -33,7 +28,7 @@
     
     self.currentUser = [PFUser currentUser];
     
-    [imageUser setUserInteractionEnabled:YES];
+    [ParseImage setUserInteractionEnabled:YES];
     
     self.tapRecongnizer = [[UITapGestureRecognizer alloc]
                                              initWithTarget:self action:@selector(changeProfile)];
@@ -55,19 +50,18 @@
         [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
                 if (!error) {
                     self.image = [UIImage imageWithData:imageData];
-                    imageUser.image = self.image;
-
-                }else{
-                     imageUser.image = [UIImage imageNamed:@"settings_blank"];
-                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                    ParseImage.image = self.image;
                 }
             }];
-
-        imageUser.layer.cornerRadius = imageUser.frame.size.width/2;
-        imageUser.layer.masksToBounds = YES;
-        imageUser.clipsToBounds = YES;
+        
+        self.image = [UIImage imageNamed:@"blankProfile"];
+        ParseImage.image = self.image;
+        
+//        ParseImage.layer.cornerRadius = ParseImage.frame.size.width/2;
+        ParseImage.layer.masksToBounds = YES;
+        ParseImage.clipsToBounds = YES;
     
-        [imageUser addGestureRecognizer:self.tapRecongnizer];
+        [ParseImage addGestureRecognizer:self.tapRecongnizer];
         
     }else{
         [self.tabBarController setSelectedIndex:0];
@@ -142,11 +136,12 @@
 }
 
 - (IBAction)logout:(id)sender {
-    [PFUser logOut];
+
     
     self.currentUser = nil;
     self.image = nil;
-    self.imageUser = nil;
+    self.ParseImage = nil;
+    [PFUser logOut];
     [self performSegueWithIdentifier:@"showLoginFromSettings" sender:self];
     
     

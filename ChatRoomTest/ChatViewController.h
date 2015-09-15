@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <JSQMessagesViewController/JSQMessage.h>
+#import <Parse/Parse.h>
 #import "ChatView.h"
+#import "ChatCell.h"
+#define kTableViewRowHeight 66;
 
-@interface ChatViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface ChatViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>{
+    
+}
 
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 

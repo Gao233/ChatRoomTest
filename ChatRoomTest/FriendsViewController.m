@@ -70,11 +70,18 @@
     
     [self.tableview deselectRowAtIndexPath:indexPath animated:NO];
     
+    //Create a gropuId for two users
+    NSString *id1 = [[PFUser currentUser] objectId];
+    NSString *id2 = [[self.friends objectAtIndex:indexPath.row] objectId];
+    
+    self.groupId = ([id1 compare:id2] < 0) ? [NSString stringWithFormat:@"%@%@", id1, id2] : [NSString stringWithFormat:@"%@%@", id2, id1];
     //Create a chat view when select a friend
-    ChatView *chatView = [[ChatView alloc] init];
+    ChatView *chatView = [[ChatView alloc] initWith:self.groupId];
     chatView.hidesBottomBarWhenPushed = YES;
     chatView.reciever = [self.friends objectAtIndex:indexPath.row];
+    chatView.title = [[self.friends objectAtIndex:indexPath.row] username];
     [self.navigationController pushViewController:chatView animated:YES];
+    
     
 }
 
@@ -86,11 +93,6 @@
         EditFriendsViewController *viewController = (EditFriendsViewController *)segue.destinationViewController;
         viewController.friends = [NSMutableArray arrayWithArray:self.friends];
         
-    }else if([segue.identifier isEqualToString:@"showChatViewFromFriends"]){
-        //pass the username to chat view
-
-        //create a message object for current user and reciever
-        //I need: reciever name, reciever's profile picture, the messages they are sending(as mutable array)
     }
     
 }

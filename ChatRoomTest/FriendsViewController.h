@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSArray *friends;
 @property (strong, nonatomic) PFUser *chatUser;
 @property (nonatomic, strong) PFRelation *friendsRelation;
+@property (strong, nonatomic) NSString *groupId;
+@property (strong, nonatomic) NSString *lastMessage;
 
 
 @end

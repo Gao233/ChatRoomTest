@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "HomeCell.h"
 
-@interface HomeTableViewController : UITableViewController
+@interface HomeTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>{
+    
+}
 
 @property (strong, nonatomic) PFUser *currentUser;
 
-//- (IBAction)logout:(id)sender;
 
 @end

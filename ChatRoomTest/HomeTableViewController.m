@@ -8,7 +8,11 @@
 
 #import "HomeTableViewController.h"
 
-@interface HomeTableViewController ()
+@interface HomeTableViewController (){
+
+    NSMutableArray *posts;
+
+}
 
 @end
 
@@ -16,6 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.navigationController setNavigationBarHidden:NO];
     
     self.currentUser = [PFUser currentUser];
     
@@ -27,11 +33,17 @@
         [self performSegueWithIdentifier:@"showLogin" sender:self];
         
     }
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed: @"pic_background"]];
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+  
+    [self getCellInfo];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,12 +55,59 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 0;
+    return [posts count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 127;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    static NSString *CellIdentifier = @"HomeCellIdentifier";
+    
+    HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"HomeCell" owner:self options:nil];
+    cell = [nibs objectAtIndex:0];
+   
+    PFObject *singlePost = [posts objectAtIndex:indexPath.row];
+    cell.name.text = [singlePost objectForKey:@"name"];
+    cell.headline.text = [singlePost objectForKey:@"title"];
+    cell.content.text = [singlePost objectForKey:@"content"];
+    
+    
+    return cell;
+
+
+}
+
+- (void)getCellInfo{
+
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query orderByDescending:@"updatedAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            
+            posts =[[NSMutableArray alloc] initWithArray:objects];
+            
+            [self.tableView reloadData];
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+
 }
 
 #pragma mark - Helper methods
@@ -56,17 +115,7 @@
     
     if([segue.identifier isEqualToString:@"showLogin"]){
         [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
-
     }
 }
-//- (IBAction)logout:(id)sender {
-//    [PFUser logOut];
-//    
-//    self.currentUser = nil;
-//    
-//    NSLog(@"Current user: %@", [PFUser currentUser]);
-//    [self performSegueWithIdentifier:@"showLogin" sender:self];
-//    
-//    
-//}
+
 @end

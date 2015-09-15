@@ -17,7 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-   self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] init]];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] init]];
+    [self.navigationController setNavigationBarHidden:YES];
+    self.usernameField.delegate = self;
+    self.passwordField.delegate = self;
 }
 
 - (IBAction)login:(id)sender {
@@ -40,6 +43,7 @@
                                                 [alertView show];
                                                 
                                             } else {
+                                                [self.navigationController setNavigationBarHidden:NO];
                                                 [self.navigationController popToRootViewControllerAnimated:YES];
                                             }
                                         }];
@@ -48,5 +52,22 @@
         
     }
 }
+
+
+
+#pragma mark - keyboard dismiss
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+// It is important for you to hide the keyboard
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
 
 @end
