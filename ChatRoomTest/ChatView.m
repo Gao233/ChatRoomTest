@@ -39,17 +39,18 @@
     self.messages = [[NSMutableArray alloc] init];
     
     self.currentUser = [PFUser currentUser];
-//    self.title = self.reciever.username;
 
     self.senderId = self.currentUser.objectId;
     self.senderDisplayName = self.currentUser.username;
 
     self.showLoadEarlierMessagesHeader = YES;
     
-    //Using Parse.com to download all the pass messages
+    //Using Parse.com to download all the past messages
 
     isLoading = NO;
     [self loadMessages];
+    //To retrieve reciever for the Recent class
+    [self getRecieverInfo];
     [self createRecentItem];
 }
 
@@ -94,6 +95,21 @@
         [self updateLastMessage];
 }
 
+-(void)getRecieverInfo{
+    //User groupId to get reciever's id and then get reciever's name
+    NSString *firstId = [groupId substringWithRange:NSMakeRange(0, 10)];//Chen
+    NSString *secondId = [groupId substringFromIndex:10];//Gao
+    NSString *recieverId;
+    if([firstId isEqualToString:[[PFUser currentUser] objectId]]){
+      recieverId = secondId;
+    }else{
+      recieverId= firstId;
+    }
+
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"objectId" equalTo:recieverId];
+    self.reciever = [[query findObjects] objectAtIndex:0];
+}
 
 -(void)createRecentItem{
     
@@ -112,6 +128,7 @@
                 recent[@"RecieverId"] = self.reciever.objectId;
                 recent[@"SenderFullName"] = [self.currentUser username];
                 recent[@"groupId"] = groupId;
+              
                 recent[@"LastMessage"] = @"";
                 
                 [recent saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

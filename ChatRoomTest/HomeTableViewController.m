@@ -37,6 +37,8 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed: @"pic_background"]];
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getCellInfo) forControlEvents:UIControlEventValueChanged];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -94,30 +96,26 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    
     //Create a gropuId for two users
     
     NSString *senderId = [[posts objectAtIndex:indexPath.row] objectForKey:@"sender"];
-    if(senderId >= [[PFUser currentUser] objectId]){
-        
-    groupId = [NSString stringWithFormat:@"%@%@", senderId , [[PFUser currentUser] objectId]];
     
+    if([senderId isEqualToString:[[PFUser currentUser] objectId]]){
+        //Click it's own post, do nothing
     }else{
         
-    groupId = [NSString stringWithFormat:@"%@%@", [[PFUser currentUser] objectId] , senderId];
+        NSString *id1 = senderId;
+        NSString *id2 = [[PFUser currentUser] objectId];
+        groupId = ([id1 compare:id2] < 0) ? [NSString stringWithFormat:@"%@%@", id1, id2] : [NSString stringWithFormat:@"%@%@", id2, id1];
         
-    }
-    
-    NSLog(@"groupId is: %@", groupId);
-    
     //Create a chat view when select a friend
     ChatView *chatView = [[ChatView alloc] initWith:groupId];
     chatView.hidesBottomBarWhenPushed = YES;
     chatView.title = [[posts objectAtIndex:indexPath.row] objectForKey:@"senderName"];
-
-
     
     [self.navigationController pushViewController:chatView animated:YES];
-
+    }
     
 }
 
@@ -138,7 +136,7 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-
+    [self.refreshControl endRefreshing];
 }
 
 #pragma mark - Helper methods
