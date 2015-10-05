@@ -17,6 +17,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *author;
 @property (strong, nonatomic) IBOutlet UILabel *professor;
 @property (strong, nonatomic) IBOutlet UILabel *price;
-@property (strong, nonatomic) IBOutlet UIView *stamp;
+@property (strong, nonatomic) IBOutlet UIImageView *stamp;
 
 @end

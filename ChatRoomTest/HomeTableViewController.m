@@ -88,7 +88,8 @@
     cell.author.text = [singlePost objectForKey:@"author"];
     cell.professor.text = [singlePost objectForKey:@"professor"];
     cell.price.text = [singlePost objectForKey:@"price"];
-
+    cell.stamp.image = nil;
+    
     return cell;
 }
 

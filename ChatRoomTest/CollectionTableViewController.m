@@ -78,6 +78,8 @@
     cell.author.text = [singlePost objectForKey:@"author"];
     cell.professor.text = [singlePost objectForKey:@"professor"];
     cell.price.text = [singlePost objectForKey:@"price"];
+    cell.stamp.image = nil;
+    
     }
     
     return cell;
@@ -88,11 +90,16 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    HomeCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if(cell.stamp.image == nil){
+        cell.stamp.image = [UIImage imageNamed:@"sold.jpg"];
+    }else{
+        cell.stamp.image = nil;
+    }
     
 }
 
 -(void)getCellInfo{
-
 
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query whereKey:@"sender" equalTo:[[PFUser currentUser]objectId]];
@@ -108,6 +115,9 @@
     }];
     [self.refreshControl endRefreshing];
 }
+
+
+
 
 -(IBAction)star:(id)sender{
 
