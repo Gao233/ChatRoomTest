@@ -56,6 +56,7 @@
     post[@"professor"] = self.theProfessor.text;
     post[@"sender"] = [[PFUser currentUser] objectId];
     post[@"senderName"] = [[PFUser currentUser] username];
+    post[@"sold"] = @"0";
 
   if([self.theCourse.text length] == 0 || [self.theCourseNumber.text length] == 0 || [self.theTitle.text length] == 0|| [self.theAuthor.text length] == 0|| [self.thePrice.text length] == 0 )
   {

@@ -88,7 +88,11 @@
     cell.author.text = [singlePost objectForKey:@"author"];
     cell.professor.text = [singlePost objectForKey:@"professor"];
     cell.price.text = [singlePost objectForKey:@"price"];
-    cell.stamp.image = nil;
+    if([[singlePost objectForKey:@"sold"] isEqualToString:@"0"]){
+        cell.stamp.image = nil;
+    }else{
+        cell.stamp.image = [UIImage imageNamed:@"sold.jpg"];
+    }
     
     return cell;
 }

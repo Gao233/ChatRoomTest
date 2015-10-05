@@ -78,7 +78,11 @@
     cell.author.text = [singlePost objectForKey:@"author"];
     cell.professor.text = [singlePost objectForKey:@"professor"];
     cell.price.text = [singlePost objectForKey:@"price"];
-    cell.stamp.image = nil;
+    if([[singlePost objectForKey:@"sold"] isEqualToString:@"0"]){
+            cell.stamp.image = nil;
+    }else{
+            cell.stamp.image = [UIImage imageNamed:@"sold.jpg"];
+    }
     
     }
     
@@ -91,10 +95,27 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     HomeCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    PFObject *thePost = [posts objectAtIndex:indexPath.row];
+
+    NSString *postId =thePost.objectId;
+
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    
     if(cell.stamp.image == nil){
         cell.stamp.image = [UIImage imageNamed:@"sold.jpg"];
+        [query getObjectInBackgroundWithId:postId
+                                     block:^(PFObject *singlePost, NSError *error) {
+                                         singlePost[@"sold"] = @"1";
+                                         [singlePost saveInBackground];
+                                     }];
     }else{
         cell.stamp.image = nil;
+        [query getObjectInBackgroundWithId:postId
+                                     block:^(PFObject *singlePost, NSError *error) {
+                                         singlePost[@"sold"] = @"0";
+                                         [singlePost saveInBackground];
+                                     }];
     }
     
 }
