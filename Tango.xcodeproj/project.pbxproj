@@ -64,9 +64,6 @@
 		307C37221B891F590053CECF /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C37201B891F590053CECF /* plus@2x.png */; };
 		307C37251B89272F0053CECF /* blankProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C37231B89272F0053CECF /* blankProfile.png */; };
 		307C37261B89272F0053CECF /* blankProfile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C37241B89272F0053CECF /* blankProfile@2x.png */; };
-		307C37291B8FC2940053CECF /* ViewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307C37281B8FC2940053CECF /* ViewPostViewController.m */; };
-		307C372D1B8FC5BE0053CECF /* ReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 307C372B1B8FC5BE0053CECF /* ReplyCell.m */; };
-		307C372E1B8FC5BE0053CECF /* ReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 307C372C1B8FC5BE0053CECF /* ReplyCell.xib */; };
 		30996D331B77E63400607D4C /* pic_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 30996D321B77E63400607D4C /* pic_background.png */; };
 		30996D371B77E9EA00607D4C /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30996D351B77E9EA00607D4C /* HomeCell.m */; };
 		30996D381B77E9EA00607D4C /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30996D361B77E9EA00607D4C /* HomeCell.xib */; };
@@ -163,11 +160,6 @@
 		307C37201B891F590053CECF /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
 		307C37231B89272F0053CECF /* blankProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankProfile.png; sourceTree = "<group>"; };
 		307C37241B89272F0053CECF /* blankProfile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blankProfile@2x.png"; sourceTree = "<group>"; };
-		307C37271B8FC2940053CECF /* ViewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPostViewController.h; sourceTree = "<group>"; };
-		307C37281B8FC2940053CECF /* ViewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPostViewController.m; sourceTree = "<group>"; };
-		307C372A1B8FC5BE0053CECF /* ReplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyCell.h; sourceTree = "<group>"; };
-		307C372B1B8FC5BE0053CECF /* ReplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyCell.m; sourceTree = "<group>"; };
-		307C372C1B8FC5BE0053CECF /* ReplyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReplyCell.xib; sourceTree = "<group>"; };
 		30996D321B77E63400607D4C /* pic_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic_background.png; sourceTree = "<group>"; };
 		30996D341B77E9EA00607D4C /* HomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
 		30996D351B77E9EA00607D4C /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
@@ -353,11 +345,6 @@
 				307C36CA1B86360F0053CECF /* CollectionTableViewController.m */,
 				307C36D01B864E680053CECF /* NewPostViewController.h */,
 				307C36D11B864E680053CECF /* NewPostViewController.m */,
-				307C37271B8FC2940053CECF /* ViewPostViewController.h */,
-				307C37281B8FC2940053CECF /* ViewPostViewController.m */,
-				307C372A1B8FC5BE0053CECF /* ReplyCell.h */,
-				307C372B1B8FC5BE0053CECF /* ReplyCell.m */,
-				307C372C1B8FC5BE0053CECF /* ReplyCell.xib */,
 			);
 			name = "01. Home";
 			sourceTree = "<group>";
@@ -502,7 +489,6 @@
 				307C36DE1B8676AB0053CECF /* Edit@2x.png in Resources */,
 				307C36E21B8679C80053CECF /* chat@2x.png in Resources */,
 				307C37141B86A4450053CECF /* home@2x.png in Resources */,
-				307C372E1B8FC5BE0053CECF /* ReplyCell.xib in Resources */,
 				307C37261B89272F0053CECF /* blankProfile@2x.png in Resources */,
 				304ED8911BA8C22F0086D5C9 /* square.png in Resources */,
 				307C36D61B8661290053CECF /* camera@2x.png in Resources */,
@@ -593,7 +579,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				307C36CB1B86360F0053CECF /* CollectionTableViewController.m in Sources */,
-				307C372D1B8FC5BE0053CECF /* ReplyCell.m in Sources */,
 				300D048D1B3919060032F927 /* SignupViewController.m in Sources */,
 				30BDA57C1B41DFDE004F31AE /* ChatViewController.m in Sources */,
 				30BDA5801B422AF9004F31AE /* ChatCell.m in Sources */,
@@ -604,7 +589,6 @@
 				30BDA5891B4377A2004F31AE /* ChatView.m in Sources */,
 				300D04901B39190D0032F927 /* LoginViewController.m in Sources */,
 				300D048A1B38CCF00032F927 /* SettingsViewController.m in Sources */,
-				307C37291B8FC2940053CECF /* ViewPostViewController.m in Sources */,
 				300D042E1B38673A0032F927 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

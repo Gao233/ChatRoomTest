@@ -23,7 +23,6 @@
     [super viewDidLoad];
    self.tableview.tableFooterView = [UIView new];
 
-
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -124,5 +123,6 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+
 }
 @end

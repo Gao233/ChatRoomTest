@@ -23,19 +23,14 @@
     [self.navigationController hidesBottomBarWhenPushed];
     self.title = @"My Store";
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    [query whereKey:@"sender" equalTo:[[PFUser currentUser]objectId]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            posts =[[NSMutableArray alloc] initWithArray:objects];
-            
-            [self.tableView reloadData];
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
-
+    [self getCellInfo];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getCellInfo) forControlEvents:UIControlEventValueChanged];
+//    [self.refreshControl endRefreshing];
+    
+    
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -52,7 +47,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return [posts count];
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -71,6 +66,7 @@
     
     HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    if(cell == nil){
     NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"HomeCell" owner:self options:nil];
     cell = [nibs objectAtIndex:0];
     // Configure the cell...
@@ -82,6 +78,7 @@
     cell.author.text = [singlePost objectForKey:@"author"];
     cell.professor.text = [singlePost objectForKey:@"professor"];
     cell.price.text = [singlePost objectForKey:@"price"];
+    }
     
     return cell;
     
@@ -93,6 +90,25 @@
     
     
 }
+
+-(void)getCellInfo{
+
+
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query whereKey:@"sender" equalTo:[[PFUser currentUser]objectId]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            posts =[[NSMutableArray alloc] initWithArray:objects];
+            
+            [self.tableView reloadData];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    [self.refreshControl endRefreshing];
+}
+
 -(IBAction)star:(id)sender{
 
     [self.navigationController popViewControllerAnimated:YES];

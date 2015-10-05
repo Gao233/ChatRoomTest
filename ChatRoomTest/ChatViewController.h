@@ -20,6 +20,5 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 
-- (IBAction)write:(id)sender;
 
 @end
