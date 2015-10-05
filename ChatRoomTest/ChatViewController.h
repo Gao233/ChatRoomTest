@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 #import "ChatView.h"
 #import "ChatCell.h"
+#import "HomeTableViewController.h"
 #define kTableViewRowHeight 66;
 
 @interface ChatViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>{

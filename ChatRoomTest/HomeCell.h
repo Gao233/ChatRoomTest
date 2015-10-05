@@ -11,9 +11,12 @@
 
 @interface HomeCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UILabel *headline;
-@property (strong, nonatomic) IBOutlet UILabel *content;
-@property (strong, nonatomic) IBOutlet UILabel *reply;
-@property (strong, nonatomic) IBOutlet UILabel *name;
+@property (strong, nonatomic) IBOutlet UILabel *courseName;
+@property (strong, nonatomic) IBOutlet UILabel *courseNumber;
+@property (strong, nonatomic) IBOutlet UILabel *title;
+@property (strong, nonatomic) IBOutlet UILabel *author;
+@property (strong, nonatomic) IBOutlet UILabel *professor;
+@property (strong, nonatomic) IBOutlet UILabel *price;
+@property (strong, nonatomic) IBOutlet UIView *stamp;
 
 @end

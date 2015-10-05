@@ -75,6 +75,8 @@
     //Create a gropuId for two users
     
     groupId = [[recents objectAtIndex:indexPath.row] objectForKey:@"groupId"];
+    
+    NSLog(@"Recent groupId is: %@", groupId);
 
     //Create a chat view when select a friend
     ChatView *chatView = [[ChatView alloc] initWith:groupId];
@@ -90,15 +92,15 @@
 }
 
 #pragma mark - IBActions
-
-- (IBAction)write:(id)sender {
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Please select a friend to start chatting with" message:nil delegate:self cancelButtonTitle:@"Next" otherButtonTitles:nil, nil];
-    [alert show];
-    
-    [self.tabBarController setSelectedIndex:2];
-    
-}
+//
+//- (IBAction)write:(id)sender {
+//    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Please select a friend to start chatting with" message:nil delegate:self cancelButtonTitle:@"Next" otherButtonTitles:nil, nil];
+//    [alert show];
+//    
+//    [self.tabBarController setSelectedIndex:2];
+//    
+//}
 
 #pragma mark - Helper methods
 

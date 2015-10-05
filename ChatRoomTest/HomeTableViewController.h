@@ -9,12 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "HomeCell.h"
+#import "ChatView.h"
+#import "ChatViewController.h"
 
 @interface HomeTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>{
     
 }
 
 @property (strong, nonatomic) PFUser *currentUser;
+
+
 
 
 @end

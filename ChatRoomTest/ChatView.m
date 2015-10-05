@@ -101,7 +101,7 @@
     [query whereKey:@"groupId" equalTo:groupId];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error){
-            
+            NSLog(@"Error: %@", error);
         }else
         {
             if([objects count] == 0)

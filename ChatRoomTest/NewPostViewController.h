@@ -11,14 +11,15 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 
-@interface NewPostViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate>
+@interface NewPostViewController : UIViewController<UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextField *theCourse;
+@property (weak, nonatomic) IBOutlet UITextField *theCourseNumber;
 @property (weak, nonatomic) IBOutlet UITextField *theTitle;
-@property (weak, nonatomic) IBOutlet UITextView *theContent;
-@property (weak, nonatomic) IBOutlet UIButton *choosePic;
-@property (strong, nonatomic) IBOutlet PFImageView *image1;
-@property (strong, nonatomic) IBOutlet PFImageView *image2;
-@property (strong, nonatomic) IBOutlet PFImageView *image3;
+@property (weak, nonatomic) IBOutlet UITextField *theAuthor;
+@property (weak, nonatomic) IBOutlet UITextField *thePrice;
+@property (weak, nonatomic) IBOutlet UITextField *theProfessor;
+
 
 - (IBAction)send:(id)sender;
 

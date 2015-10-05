@@ -10,12 +10,12 @@
 #define COCOAPODS_POD_AVAILABLE_Bolts_Tasks
 #define COCOAPODS_VERSION_MAJOR_Bolts_Tasks 1
 #define COCOAPODS_VERSION_MINOR_Bolts_Tasks 2
-#define COCOAPODS_VERSION_PATCH_Bolts_Tasks 0
+#define COCOAPODS_VERSION_PATCH_Bolts_Tasks 2
 
 // JSQMessagesViewController
 #define COCOAPODS_POD_AVAILABLE_JSQMessagesViewController
 #define COCOAPODS_VERSION_MAJOR_JSQMessagesViewController 7
-#define COCOAPODS_VERSION_MINOR_JSQMessagesViewController 1
+#define COCOAPODS_VERSION_MINOR_JSQMessagesViewController 2
 #define COCOAPODS_VERSION_PATCH_JSQMessagesViewController 0
 
 // JSQSystemSoundPlayer
@@ -27,12 +27,12 @@
 // Parse
 #define COCOAPODS_POD_AVAILABLE_Parse
 #define COCOAPODS_VERSION_MAJOR_Parse 1
-#define COCOAPODS_VERSION_MINOR_Parse 7
+#define COCOAPODS_VERSION_MINOR_Parse 8
 #define COCOAPODS_VERSION_PATCH_Parse 5
 
 // ParseUI
 #define COCOAPODS_POD_AVAILABLE_ParseUI
 #define COCOAPODS_VERSION_MAJOR_ParseUI 1
 #define COCOAPODS_VERSION_MINOR_ParseUI 1
-#define COCOAPODS_VERSION_PATCH_ParseUI 4
+#define COCOAPODS_VERSION_PATCH_ParseUI 6
 

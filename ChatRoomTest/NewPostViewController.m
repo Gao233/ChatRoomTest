@@ -21,9 +21,9 @@
     
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     
-    [[self.theContent layer] setBorderColor:[[UIColor grayColor] CGColor]];
-    [[self.theContent  layer] setBorderWidth:2.3];
-    [[self.theContent layer] setCornerRadius:15];
+//    [[self.theContent layer] setBorderColor:[[UIColor grayColor] CGColor]];
+//    [[self.theContent  layer] setBorderWidth:2.3];
+//    [[self.theContent layer] setCornerRadius:15];
     // Do any additional setup after loading the view.
 }
 
@@ -48,13 +48,19 @@
 -(IBAction)send:(id)sender{
 
     PFObject *post = [PFObject objectWithClassName:@"Post"];
-    post[@"name"] = [[PFUser currentUser] username];
+    post[@"course"] = self.theCourse.text;
+    post[@"courseNumber"] = self.theCourseNumber.text;
     post[@"title"] = self.theTitle.text;
-    post[@"content"] = self.theContent.text;
-  if([self.theTitle.text length] == 0 || [self.theContent.text length] == 0 )
+    post[@"author"] = self.theAuthor.text;
+    post[@"price"] = self.thePrice.text;
+    post[@"professor"] = self.theProfessor.text;
+    post[@"sender"] = [[PFUser currentUser] objectId];
+    post[@"senderName"] = [[PFUser currentUser] username];
+
+  if([self.theCourse.text length] == 0 || [self.theCourseNumber.text length] == 0 || [self.theTitle.text length] == 0|| [self.theAuthor.text length] == 0|| [self.thePrice.text length] == 0 )
   {
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Opps" message:@"Title and contents can not be blank" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Opps" message:@"Except for Professor, other options should not be blank" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
         [alertView show];
         
     }else{

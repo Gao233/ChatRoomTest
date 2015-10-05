@@ -11,7 +11,7 @@
 @interface HomeTableViewController (){
 
     NSMutableArray *posts;
-
+    NSString *groupId;
 }
 
 @end
@@ -33,7 +33,7 @@
         [self performSegueWithIdentifier:@"showLogin" sender:self];
         
     }
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed: @"pic_background"]];
     
@@ -65,7 +65,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 127;
+    return 130;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -80,14 +80,45 @@
     cell = [nibs objectAtIndex:0];
    
     PFObject *singlePost = [posts objectAtIndex:indexPath.row];
-    cell.name.text = [singlePost objectForKey:@"name"];
-    cell.headline.text = [singlePost objectForKey:@"title"];
-    cell.content.text = [singlePost objectForKey:@"content"];
-    
-    
+    cell.courseName.text = [singlePost objectForKey:@"course"];
+    cell.courseNumber.text = [singlePost objectForKey:@"courseNumber"];
+    cell.title.text = [singlePost objectForKey:@"title"];
+    cell.author.text = [singlePost objectForKey:@"author"];
+    cell.professor.text = [singlePost objectForKey:@"professor"];
+    cell.price.text = [singlePost objectForKey:@"price"];
+
     return cell;
+}
 
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    //Create a gropuId for two users
+    
+    NSString *senderId = [[posts objectAtIndex:indexPath.row] objectForKey:@"sender"];
+    if(senderId >= [[PFUser currentUser] objectId]){
+        
+    groupId = [NSString stringWithFormat:@"%@%@", senderId , [[PFUser currentUser] objectId]];
+    
+    }else{
+        
+    groupId = [NSString stringWithFormat:@"%@%@", [[PFUser currentUser] objectId] , senderId];
+        
+    }
+    
+    NSLog(@"groupId is: %@", groupId);
+    
+    //Create a chat view when select a friend
+    ChatView *chatView = [[ChatView alloc] initWith:groupId];
+    chatView.hidesBottomBarWhenPushed = YES;
+    chatView.title = [[posts objectAtIndex:indexPath.row] objectForKey:@"senderName"];
+
+
+    
+    [self.navigationController pushViewController:chatView animated:YES];
+
+    
 }
 
 - (void)getCellInfo{

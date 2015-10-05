@@ -9,7 +9,9 @@
 #import "CollectionTableViewController.h"
 
 @interface CollectionTableViewController ()
-
+{
+    NSMutableArray *posts;
+}
 @end
 
 @implementation CollectionTableViewController
@@ -19,7 +21,20 @@
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.navigationController hidesBottomBarWhenPushed];
-    self.title = @"My collections";
+    self.title = @"My Store";
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query whereKey:@"sender" equalTo:[[PFUser currentUser]objectId]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            posts =[[NSMutableArray alloc] initWithArray:objects];
+            
+            [self.tableView reloadData];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 
 }
 
@@ -37,12 +52,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return [posts count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 5;
+    return [posts count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -60,11 +75,24 @@
     cell = [nibs objectAtIndex:0];
     // Configure the cell...
     
+    PFObject *singlePost = [posts objectAtIndex:indexPath.row];
+    cell.courseName.text = [singlePost objectForKey:@"course"];
+    cell.courseNumber.text = [singlePost objectForKey:@"courseNumber"];
+    cell.title.text = [singlePost objectForKey:@"title"];
+    cell.author.text = [singlePost objectForKey:@"author"];
+    cell.professor.text = [singlePost objectForKey:@"professor"];
+    cell.price.text = [singlePost objectForKey:@"price"];
+    
     return cell;
     
     
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    
+}
 -(IBAction)star:(id)sender{
 
     [self.navigationController popViewControllerAnimated:YES];
