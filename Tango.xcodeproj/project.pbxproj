@@ -770,7 +770,7 @@
 				INFOPLIST_FILE = ChatRoomTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = TangoTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatRoomTest.app/ChatRoomTest";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tango.app/Tango";
 			};
 			name = Debug;
 		};
@@ -785,7 +785,7 @@
 				INFOPLIST_FILE = ChatRoomTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = TangoTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatRoomTest.app/ChatRoomTest";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tango.app/Tango";
 			};
 			name = Release;
 		};

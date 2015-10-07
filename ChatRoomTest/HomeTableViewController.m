@@ -103,11 +103,28 @@
     
     
     //Create a gropuId for two users
+    HomeCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     NSString *senderId = [[posts objectAtIndex:indexPath.row] objectForKey:@"sender"];
     
     if([senderId isEqualToString:[[PFUser currentUser] objectId]]){
         //Click it's own post, do nothing
+    }else if(cell.stamp.image != nil  ){
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Sorry"
+                                      message:@"The book is already sold"
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* yesButton = [UIAlertAction
+                                    actionWithTitle:@"Got it"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+        [alert addAction:yesButton];
+        [self presentViewController:alert animated:YES completion:nil];
+
     }else{
         
         NSString *id1 = senderId;

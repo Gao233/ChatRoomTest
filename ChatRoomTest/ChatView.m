@@ -128,7 +128,6 @@
                 recent[@"RecieverId"] = self.reciever.objectId;
                 recent[@"SenderFullName"] = [self.currentUser username];
                 recent[@"groupId"] = groupId;
-              
                 recent[@"LastMessage"] = @"";
                 
                 [recent saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
