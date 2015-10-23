@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,80 +14,124 @@
                 <rect key="frame" x="0.0" y="0.0" width="336" height="130"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square.png" translatesAutoresizingMaskIntoConstraints="NO" id="WOw-5o-aMx">
-                        <rect key="frame" x="-13" y="0.0" width="336" height="130"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.png" translatesAutoresizingMaskIntoConstraints="NO" id="WOw-5o-aMx">
+                        <rect key="frame" x="-11" y="0.0" width="350" height="130"/>
+                        <animations/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Rc-nF-hCZ">
-                        <rect key="frame" x="24" y="44" width="37" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Rc-nF-hCZ">
+                        <rect key="frame" x="24" y="44" width="37" height="20"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="16"/>
                         <color key="textColor" red="0.47876172919999999" green="0.47876172919999999" blue="0.47876172919999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsn-hK-nCr">
-                        <rect key="frame" x="24" y="66" width="56" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsn-hK-nCr">
+                        <rect key="frame" x="24" y="67" width="54" height="20"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="16"/>
                         <color key="textColor" red="0.47876172919999999" green="0.47876172919999999" blue="0.47876172919999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzp-uo-hK7">
-                        <rect key="frame" x="24" y="21" width="0.0" height="0.0"/>
+                        <rect key="frame" x="-78" y="15" width="0.0" height="0.0"/>
+                        <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Course:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gg-KY-KzS">
-                        <rect key="frame" x="24" y="21" width="54" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gg-KY-KzS">
+                        <rect key="frame" x="24" y="21" width="51" height="20"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="16"/>
                         <color key="textColor" red="0.47876172922252014" green="0.47876172922252014" blue="0.47876172922252014" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Professor:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjk-IL-NEK">
-                        <rect key="frame" x="24" y="86" width="79" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Professor:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjk-IL-NEK">
+                        <rect key="frame" x="24" y="88" width="63" height="19"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="15"/>
                         <color key="textColor" red="0.47876172919999999" green="0.47876172919999999" blue="0.47876172919999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CS" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIZ-pF-4Ux">
-                        <rect key="frame" x="86" y="21" width="73" height="21"/>
-                        <fontDescription key="fontDescription" name="IowanOldStyle-Italic" family="Iowan Old Style" pointSize="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CS" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIZ-pF-4Ux">
+                        <rect key="frame" x="86" y="21" width="22" height="20"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="559" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeL-Lh-FQ5">
-                        <rect key="frame" x="167" y="21" width="29" height="21"/>
-                        <fontDescription key="fontDescription" name="IowanOldStyle-Italic" family="Iowan Old Style" pointSize="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Computer Graphics" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBi-50-yCM">
+                        <rect key="frame" x="69" y="44" width="133" height="20"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Computer Graphics" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBi-50-yCM">
-                        <rect key="frame" x="69" y="44" width="229" height="21"/>
-                        <fontDescription key="fontDescription" name="IowanOldStyle-Italic" family="Iowan Old Style" pointSize="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shirley et al" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIL-X1-I7K">
+                        <rect key="frame" x="88" y="67" width="88" height="20"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shirley et al" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIL-X1-I7K">
-                        <rect key="frame" x="88" y="66" width="210" height="21"/>
-                        <fontDescription key="fontDescription" name="IowanOldStyle-Italic" family="Iowan Old Style" pointSize="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Teevisn" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAW-Mr-X6A">
+                        <rect key="frame" x="95" y="87" width="88" height="20"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="John Teevisn" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAW-Mr-X6A">
-                        <rect key="frame" x="99" y="86" width="142" height="21"/>
-                        <fontDescription key="fontDescription" name="IowanOldStyle-Italic" family="Iowan Old Style" pointSize="16"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYE-a6-tFm">
-                        <rect key="frame" x="242" y="87" width="65" height="21"/>
-                        <fontDescription key="fontDescription" name="IowanOldStyle-BoldItalic" family="Iowan Old Style" pointSize="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$600" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYE-a6-tFm">
+                        <rect key="frame" x="239" y="83" width="48" height="25"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
                         <color key="textColor" red="0.99713302752293564" green="0.038409712924128758" blue="0.038409712924128758" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sold.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="apP-B4-b7Q">
-                        <rect key="frame" x="214" y="73" width="84" height="41"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sold.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="apP-B4-b7Q">
+                        <rect key="frame" x="229" y="72" width="84" height="42"/>
+                        <animations/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="559" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeL-Lh-FQ5">
+                        <rect key="frame" x="116" y="21" width="29" height="20"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="16"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="WOw-5o-aMx" secondAttribute="bottom" constant="-8" id="32N-Ej-nPp"/>
+                    <constraint firstItem="Vjk-IL-NEK" firstAttribute="top" secondItem="Gsn-hK-nCr" secondAttribute="bottom" constant="1" id="Fmj-Q3-IHJ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="WOw-5o-aMx" secondAttribute="trailing" constant="-11" id="Ftb-Ea-6Ub"/>
+                    <constraint firstItem="5Rc-nF-hCZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="16" id="Gb5-Rs-yy8"/>
+                    <constraint firstItem="BBi-50-yCM" firstAttribute="leading" secondItem="5Rc-nF-hCZ" secondAttribute="trailing" constant="8" id="HTr-VF-hVU"/>
+                    <constraint firstItem="rIL-X1-I7K" firstAttribute="top" secondItem="BBi-50-yCM" secondAttribute="bottom" constant="3" id="IgW-U4-KyL"/>
+                    <constraint firstItem="LeL-Lh-FQ5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="13" id="Jgy-Y1-StD"/>
+                    <constraint firstItem="zIZ-pF-4Ux" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="13" id="T02-iC-Dix"/>
+                    <constraint firstItem="Vjk-IL-NEK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="16" id="VTM-M9-ITu"/>
+                    <constraint firstItem="5Rc-nF-hCZ" firstAttribute="top" secondItem="4gg-KY-KzS" secondAttribute="bottom" constant="3" id="WSB-Hk-StU"/>
+                    <constraint firstItem="zIZ-pF-4Ux" firstAttribute="leading" secondItem="4gg-KY-KzS" secondAttribute="trailing" constant="11" id="WkS-BP-Rm5"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="gAW-Mr-X6A" secondAttribute="bottom" constant="15" id="b0W-tQ-rMh"/>
+                    <constraint firstItem="apP-B4-b7Q" firstAttribute="top" secondItem="BBi-50-yCM" secondAttribute="bottom" constant="8" id="cZr-A6-vdv"/>
+                    <constraint firstItem="LeL-Lh-FQ5" firstAttribute="leading" secondItem="zIZ-pF-4Ux" secondAttribute="trailing" constant="8" id="dT6-FE-igE"/>
+                    <constraint firstItem="4gg-KY-KzS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="13" id="dkC-tE-N3N"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="apP-B4-b7Q" secondAttribute="trailing" constant="15" id="ehb-4C-3ro"/>
+                    <constraint firstItem="rIL-X1-I7K" firstAttribute="leading" secondItem="Gsn-hK-nCr" secondAttribute="trailing" constant="10" id="gnx-ja-lD1"/>
+                    <constraint firstItem="gAW-Mr-X6A" firstAttribute="leading" secondItem="Vjk-IL-NEK" secondAttribute="trailing" constant="8" id="gzR-Rs-fEW"/>
+                    <constraint firstItem="WOw-5o-aMx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="hRo-zS-e55"/>
+                    <constraint firstItem="WOw-5o-aMx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-19" id="iW2-SL-IzE"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="SYE-a6-tFm" secondAttribute="trailing" constant="41" id="inA-fY-SPe"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="SYE-a6-tFm" secondAttribute="bottom" constant="14" id="jWn-8K-RSw"/>
+                    <constraint firstItem="4gg-KY-KzS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="16" id="lpw-8h-l2A"/>
+                    <constraint firstItem="Gsn-hK-nCr" firstAttribute="top" secondItem="BBi-50-yCM" secondAttribute="bottom" constant="3" id="qOv-k8-yUe"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="apP-B4-b7Q" secondAttribute="bottom" constant="8" id="rpu-zQ-kGa"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Vjk-IL-NEK" secondAttribute="bottom" constant="15" id="xSZ-k8-9eq"/>
+                    <constraint firstItem="Gsn-hK-nCr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="16" id="zgz-Y7-9AU"/>
+                </constraints>
             </tableViewCellContentView>
+            <animations/>
             <connections>
                 <outlet property="author" destination="rIL-X1-I7K" id="rTZ-vU-cov"/>
                 <outlet property="courseName" destination="zIZ-pF-4Ux" id="Qb7-4x-d8k"/>
@@ -101,11 +146,12 @@
         <pickerView contentMode="scaleToFill" id="IgU-pW-Jq0">
             <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+            <animations/>
             <point key="canvasLocation" x="314" y="503"/>
         </pickerView>
     </objects>
     <resources>
-        <image name="sold.jpg" width="800" height="404"/>
+        <image name="sold.jpg" width="84" height="42"/>
         <image name="square.png" width="800" height="552"/>
     </resources>
 </document>
