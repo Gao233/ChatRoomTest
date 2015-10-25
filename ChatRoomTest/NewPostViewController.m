@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.toolbarHidden = YES;
+
     self.theTitle.delegate = self;
     
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
@@ -29,7 +29,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    self.navigationController.toolbarHidden = YES;
   
 
 }

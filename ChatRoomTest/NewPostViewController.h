@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *theAuthor;
 @property (weak, nonatomic) IBOutlet UITextField *thePrice;
 @property (weak, nonatomic) IBOutlet UITextField *theProfessor;
+@property (weak, nonatomic) IBOutlet UIImageView *badgerImg;
 
 
 - (IBAction)send:(id)sender;

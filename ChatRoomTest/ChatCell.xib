@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,33 +14,37 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IeR-6V-Pqp" customClass="PFImageView">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IeR-6V-Pqp" customClass="PFImageView">
                         <rect key="frame" x="8" y="8" width="50" height="50"/>
                         <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="hRL-BS-AlC"/>
+                            <constraint firstAttribute="width" constant="50" id="tNG-td-eLx"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfO-Y6-ENd">
-                        <rect key="frame" x="71" y="8" width="46" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfO-Y6-ENd">
+                        <rect key="frame" x="71" y="8" width="45" height="21"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDH-QL-Erh">
-                        <rect key="frame" x="71" y="32" width="107" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDH-QL-Erh">
+                        <rect key="frame" x="71" y="32" width="84" height="16"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.5686084858478555" green="0.55168023228908825" blue="0.57531836461126007" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Just now" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1m5-2h-5sd">
-                        <rect key="frame" x="250" y="7" width="50" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just now" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1m5-2h-5sd">
+                        <rect key="frame" x="249" y="8" width="51" height="15"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                         <color key="textColor" red="0.47843137250000001" green="0.7843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="0 new" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvV-mz-2Qc">
-                        <rect key="frame" x="250" y="32" width="50" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 new" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvV-mz-2Qc">
+                        <rect key="frame" x="250" y="32" width="50" height="15"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="Gmv-ae-adq"/>
@@ -50,6 +55,18 @@
                     </label>
                 </subviews>
                 <animations/>
+                <constraints>
+                    <constraint firstItem="IeR-6V-Pqp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="21X-fk-hY9"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="1m5-2h-5sd" secondAttribute="trailing" constant="12" id="29W-UH-e8D"/>
+                    <constraint firstItem="IeR-6V-Pqp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="7je-0d-fRb"/>
+                    <constraint firstItem="yvV-mz-2Qc" firstAttribute="top" secondItem="1m5-2h-5sd" secondAttribute="bottom" constant="9" id="Grh-0e-tTx"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="yvV-mz-2Qc" secondAttribute="trailing" constant="12" id="HOV-ev-p5h"/>
+                    <constraint firstItem="nfO-Y6-ENd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="IRc-tA-JJg"/>
+                    <constraint firstItem="WDH-QL-Erh" firstAttribute="leading" secondItem="IeR-6V-Pqp" secondAttribute="trailing" constant="13" id="cMG-rF-AFy"/>
+                    <constraint firstItem="nfO-Y6-ENd" firstAttribute="leading" secondItem="IeR-6V-Pqp" secondAttribute="trailing" constant="13" id="f8A-27-tWv"/>
+                    <constraint firstItem="1m5-2h-5sd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="jOZ-7x-gd7"/>
+                    <constraint firstItem="WDH-QL-Erh" firstAttribute="top" secondItem="nfO-Y6-ENd" secondAttribute="bottom" constant="3" id="pfm-Cm-GcC"/>
+                </constraints>
             </tableViewCellContentView>
             <animations/>
             <connections>

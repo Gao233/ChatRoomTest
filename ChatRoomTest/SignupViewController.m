@@ -20,6 +20,7 @@
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
     self.emailField.delegate = self;
+        [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (IBAction)signup:(id)sender {
